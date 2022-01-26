@@ -121,11 +121,11 @@ https://qiita.com/e-onm/items/0814b6c4db395e331df1
 
 11 sudo nginx -t  测试配置文件语法（查看配置文件位置）
 
-12,设置linux服务器的时区 timezone为东京
+12,设置linux服务器的时区 timezone为上海
 
-   sudo timedatectl set-timezone Asia/Tokyo
+   sudo timedatectl set-timezone Asia/Shanghai
 
-   nginx的log的时间也会变成东京时间
+   nginx的log的时间也会变成上海时间
 
    
 
