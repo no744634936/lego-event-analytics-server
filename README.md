@@ -1,13 +1,19 @@
- npm init -y
+# 定时拆分日志文件
 
- npm install cron
+说是拆分其实就是将产生的日志源文件，于每天的0点0时0分复制一份，按日期改名字，
 
- npm install fs-extra
+复制的改好名字的日志文件放入另一个文件夹，然后清空日志源文件。
 
- 建立demo文件夹里的文件
 
-运行
- cd demo
- node cron-demo1.js
 
- node cron-demo2.js
+
+查看顺序
+1, src/app.js
+
+2, src/split_and_analysis/index.js
+
+3, package.json 里写上
+
+"dev": "cross-env NODE_ENV=dev nodemon src/app.js",
+
+4，npm run dev
