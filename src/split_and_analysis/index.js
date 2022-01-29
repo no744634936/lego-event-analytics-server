@@ -18,19 +18,19 @@ console.log('accessLogPath 自文件', accessLogPathFiles)
 /**
  * 定时任务 函数，上一个分支的demo有演示
  * @param {string} cronTime cron 规则
- * @param {Function} onTick 回调函数
+ * @param {Function} callback 回调函数
  */
-function schedule(cronTime, onTick) {
+function schedule(cronTime, callback) {
     if (!cronTime) return
-    if (typeof onTick !== 'function') return
+    if (typeof callback !== 'function') return
 
     // 创建定时任务
     const c = new CronJob(
         cronTime,
-        onTick,
+        callback,
         null, // onComplete 何时停止任务，null
         true, // 初始化之后立刻执行，否则要执行 c.start() 才能开始
-        'Asia/Shanghai' // 时区，重要！！
+        'Asia/Tokyo' //  'Asia/Shanghai' 时区，重要！！电脑，服务器是哪个时区，这里就设置为哪个时区
     )
 
     // 进程结束时，停止定时任务
@@ -41,7 +41,7 @@ function schedule(cronTime, onTick) {
  * 定时拆分日志文件
  */
 function splitLogFileTimed() {
-    const cronTime = '0 0 0 * * *' // 每天的 0:00:00 拆分日志
+    const cronTime = '0 22 14 * * *' // 每天的 0:00:00 拆分日志
     schedule(cronTime, splitLogFile)  //splitLogFile 方法定义了如何拆分日志
     console.log('定时拆分日志文件', cronTime)
 }

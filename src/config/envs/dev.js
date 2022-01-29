@@ -11,8 +11,8 @@ module.exports = {
         dbName: 'imooc_lego_course',
     },
 
-    // access_log 日志文件目录，要和 nginx_conf/dev/event.conf 保持一致！
-    accessLogPath: '/home/zhang/nginx_logs/event_analytics',
+    // access_log 日志文件目录，要和 nginx_conf/dev/event.mac.conf 保持一致！
+    accessLogPath: '/Users/zhanghaifeng/Projects_logs/nginx_logs/event_analytics/',
 
     // cors origin
     corsOrigin: '*',
