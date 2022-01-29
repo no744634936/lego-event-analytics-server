@@ -14,6 +14,7 @@
 
 3, package.json 里写上
 
-"dev": "cross-env NODE_ENV=dev nodemon src/app.js",
+"dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon src/app.js"
+
 
 4，npm run dev

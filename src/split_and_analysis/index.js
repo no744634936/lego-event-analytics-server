@@ -41,7 +41,8 @@ function schedule(cronTime, callback) {
  * 定时拆分日志文件
  */
 function splitLogFileTimed() {
-    const cronTime = '0 22 14 * * *' // 每天的 0:00:00 拆分日志
+    // const cronTime = '0 22 14 * * *' // 测试时的时间
+    const cronTime = '0 0 0 * * *' // 每天的 0:00:00 拆分日志
     schedule(cronTime, splitLogFile)  //splitLogFile 方法定义了如何拆分日志
     console.log('定时拆分日志文件', cronTime)
 }
