@@ -1,0 +1,111 @@
+常用命令
+• nginx -t  测试配置文件语法（查看配置文件位置）
+
+• nginx 启动
+
+• nginx -s reload 重启
+
+• nginx -s stop 停止
+
+• nginx -c xxx.conf修改配置文件位置
+
+________________________________________
+
+1, pwd       //查看当前目录显示 Users/zhanghaifeng
+
+3, 创建存放log的文件夹，以及log文件
+
+    mkdir -p "./Projects_logs/nginx_logs/event_analytics/"
+
+    touch "./Projects_logs/nginx_logs/event_analytics/access.log"  // 存放access log
+    
+    touch "./Projects_logs/nginx_logs/event_analytics/error.log"  // 存放error log
+
+4,  查看是否建立了上面的两个文件
+    cd ./Projects_logs/nginx_logs/event_analytics  
+    ls
+
+4, 创建projects文件夹，
+
+    mkdir -p "./Projects"
+
+    cd ./Projects
+
+5，从github上将 lego_event_analytics_server库clone进来
+    
+    git clone https://github.com/no744634936/lego_event_analytics_server.git
+
+   可以看到lego_event_analytics_server文件夹出现了
+
+   里面的 nginx_conf里
+   dev/event.mac.conf  的路径是上面设置的那些
+
+   dev/event.mac.conf 这个文件的内容是，
+   8083 是端口号
+   root的意思是 浏览器输入 localhost:8083/xxx 访问的是这个root文件夹下的文件
+   浏览器输入 localhost:8083/xxx 的访问log放在access.log文件
+   浏览器输入 localhost:8083/xxx 的错误log放在error.log文件
+   main 是 /etc/nginx/nginx.conf 这个nginx的配置文件里 设置好的 log 的格式
+
+   另外
+   prd-dev/event.conf
+   prd/event.conf
+   是aws的ec2环境下的路径，可以参考prd-dev/event.conf上面的写法，自己配置
+
+   nginx_static_files文件夹里有一张图片event.png
+
+6，查看nginx 配置文件位置
+
+    sudo nginx -t
+
+7，修改 nginx 配置文件
+
+    sudo vim /opt/homebrew/etc/nginx/nginx.conf    //ec2上要加上sudo 才能执行nginx相关命令
+
+    按下i，进入insert 模式
+
+    将user 从 nginx 改为 zhanghaifeng 赋予 nginx 访问文件的权限
+
+    然后写入
+
+    include /Users/zhanghaifeng/Projects/lego_event_analytics_server/nginx_conf/dev/*;  //表示引入dev/event.mac.conf 文件
+
+    按Esc 
+    :wq
+    退出
+
+
+8  sudo nginx -s stop 停止
+
+9  nginx 启动
+
+11 sudo nginx -t  测试配置文件语法（查看配置文件位置）
+
+12,我的mac电脑的时区为东京
+
+   nginx的log的时间也会变成东京时间
+
+   
+
+13，浏览器输入 
+    localhost:8083/event.png
+    localhost:8083/event.png?website=test
+
+    mac本地环境的话输入 localhost:8083/event.png
+
+    可以看到event.png
+
+14,可以查看日志
+   这两次访问情况都没记录了
+    localhost:8083/event.png
+    localhost:8083/event.png?website=test
+
+
+----------------------------------------------------------------
+
+快速查看access.log
+sudo vim /Users/zhanghaifeng/Projects_logs/nginx_logs/event_analytics/access.log
+
+
+快速查看error.log
+sudo vim /Users/zhanghaifeng/Projects_logs/nginx_logs/event_analytics/error.log
