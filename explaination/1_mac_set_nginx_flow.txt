@@ -1,13 +1,13 @@
 常用命令
-• nginx -t  测试配置文件语法（查看配置文件位置）
+• sudo nginx -t  测试配置文件语法（查看配置文件位置 /opt/homebrew/etc/nginx/nginx.conf）
 
-• nginx 启动
+• sudo nginx 启动
 
-• nginx -s reload 重启
+• sudo nginx -s reload 重启
 
-• nginx -s stop 停止
+• sudo nginx -s stop 停止
 
-• nginx -c xxx.conf修改配置文件位置
+• sudo nginx -c xxx.conf修改配置文件位置
 
 ________________________________________
 
@@ -45,7 +45,7 @@ ________________________________________
    root的意思是 浏览器输入 localhost:8083/xxx 访问的是这个root文件夹下的文件
    浏览器输入 localhost:8083/xxx 的访问log放在access.log文件
    浏览器输入 localhost:8083/xxx 的错误log放在error.log文件
-   main 是 /etc/nginx/nginx.conf 这个nginx的配置文件里 设置好的 log 的格式
+   main 是 /opt/homebrew/etc/nginx/nginx.conf 这个nginx的配置文件里 设置好的 log 的格式
 
    另外
    prd-dev/event.conf
@@ -53,6 +53,27 @@ ________________________________________
    是aws的ec2环境下的路径，可以参考prd-dev/event.conf上面的写法，自己配置
 
    nginx_static_files文件夹里有一张图片event.png
+
+   --------------------------------
+   dev/event.mac.conf 文件中有很多点的原因：
+
+   执行 nginx -V  命令可以看到nginx有个prefix：
+
+   --prefix=/opt/homebrew/Cellar/nginx/1.21.6 
+
+   这就导致mac的nginx会去
+
+   /opt/homebrew/Cellar/nginx/1.21.6/Users/zhanghaifeng/
+
+   这个目录下找文件
+
+   为了设置成 在 /Users/zhanghaifeng/ 目录下找，所以加了很多点
+
+   aws的ec2 不存在 --prefix 这个问题
+
+   ---------------------------------------------
+
+
 
 6，查看nginx 配置文件位置
 
