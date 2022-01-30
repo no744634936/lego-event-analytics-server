@@ -12,7 +12,7 @@ const { DIST_FOLDER_NAME } = require('../config/const')
 /**
  * @description 拆分日志文件
  */
-function splitLogFile() {
+function splitLogFile(accessLogPath) {
     console.log('----------- 拆分日志文件 开始 -----------')
     console.log('当前的时间', formatNow())
 

@@ -42,7 +42,7 @@
   * 分析日志文件，结果入库
   * 为什么要容promise包裹？ 因为要取出callback函数里的result必须要用resolve才能取出来
   */
- function analysisLogs() {
+ function analysisLogs(accessLogPath) {
     return new Promise((resolve, reject) => {
 
         console.log('----------- 分析日志并入库 开始 -----------')

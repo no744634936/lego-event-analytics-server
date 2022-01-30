@@ -8,8 +8,9 @@ src/split_and_analysis/analysis-logs/analysis.js
 这两个文件，代码做了一点调整，写入了一个promise来取出result
 
 
-run 
+建立 __test__文件夹里面的所有文件
 
+run 
 npx jest __test__/analysis-logs/logs.test.js
 
 

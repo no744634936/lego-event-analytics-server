@@ -9,7 +9,7 @@
  const { formatNow } = require('../utils/util')
  const { DIST_FOLDER_NAME } = require('../config/const')
  
- function rmLogs() {
+ function rmLogs(accessLogPath) {
      console.log('----------- 删除过期日志文件 开始 -----------')
      console.log('当前的时间', formatNow())
  
