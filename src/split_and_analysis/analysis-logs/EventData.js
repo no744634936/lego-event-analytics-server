@@ -1,6 +1,6 @@
-/**
+/**            
  * @description 自定义事件统计结果
- * @author 双越
+ * @author zhang
  */
 
 class EventData {
@@ -34,10 +34,12 @@ class EventData {
         }
         this.curType = 'pv'
 
+        console.log(this.curData);
         // 累加 pv ，一步一步进行。前一步返回 true ，才可以进行下一步。
         let flag = true
         if (flag) flag = this.addCategory()
         if (flag) flag = this.addAction()
+        console.log(flag);
         if (flag) flag = this.addLabel()
         if (flag) flag = this.addValue()
     }

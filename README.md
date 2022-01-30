@@ -39,7 +39,7 @@ url的设计
 • value
 
 
-例如: http: //localhost: 8083/event.png?category=h5&action=pv&labe1=85&value=41
+例如: http://localhost:8083/event.png?category=h5&action=pv&label=85&value=41
 
 如果再有新需求，有两个按钮 '参与' 和 '不参与'，想统计一下用户点击了哪个按钮
 •点击"参与"则发送？category=h5&action=buttonClick&label=85&value=l
@@ -55,7 +55,14 @@ url的设计
 
 • 根据日志文件名，得到昨天的日志（一个文件，如果按小时分的日志，就是多个文件）
 • 逐行读取日志文件，累加统计结果 (stream 方式 readline来读取数据 )
-• 读取完毕，输出统计结果
+• 读取完毕，输出统计结果 例：
+  
+  {"h5":{"pv":9},
+  "h5.pv":{"pv":9},
+  "h5.pv.45":{"pv":2},
+  "h5.pv.45.23":{"pv":1},
+  "h5.pv.45.34":{"pv":1},
+  "h5.pv.46":{"pv":1}}
 
 ---------------------------------------------------------
 
@@ -116,3 +123,32 @@ mongoose.Schema(
     },
     { timestamps: true }
 )
+
+
+---------------------------------
+获取pv数据
+看 src/split_and_analysis/analysis-logs/index.js 文件即可
+
+
+
+数据放入数据库的流程
+npm install mongoose 
+
+1,db/mongoose.js          链接数据库
+
+2,dbTables/eventModel.js  建立数据模型
+
+3,model/anslysisDatas.js  操作数据模型的方法
+
+4, src/split_and_analysis/analysis-logs/writeDB.js 数据写入数据库
+
+5, src/split_and_analysis/analysis-logs/index.js
+
+
+
+定时获取pv，定时数据放入数据库
+
+src/split_and_analysis/index.js  里引入所有定时，拆分，分析，删除任务
+
+src/ app.js  引入所有定时，拆分，分析，删除方法
+

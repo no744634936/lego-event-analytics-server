@@ -1,6 +1,6 @@
 /**
  * @description 常量，日志分析相关的
- * @author 双越
+ * @author zhanghaifeng
  */
 
 module.exports = {

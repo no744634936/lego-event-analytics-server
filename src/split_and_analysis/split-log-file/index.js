@@ -44,6 +44,6 @@ function splitLogFile() {
 
     console.log('----------- 拆分日志文件 结束 -----------')
 }
-
+// splitLogFile() //测试用
 module.exports = splitLogFile
 
