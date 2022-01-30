@@ -16,3 +16,8 @@
 
 
 • 定义 /api/db-check 路由
+
+
+npm run dev
+
+浏览器输入 http://localhost:3002/api/db-check
