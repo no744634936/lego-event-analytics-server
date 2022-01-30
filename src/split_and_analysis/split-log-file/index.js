@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /**
  * @description 拆分日志文件
  * @author zhang
@@ -28,7 +29,7 @@ function splitLogFile(accessLogPath) {
 
     // 创建目标文件，文件名是昨天的日期。因为这是离线计算处理昨天的日志
     // Users/zhanghaifeng/Projects_logs/nginx_logs/event_analytics/logs_by_day/2022-01-28.log
-    const distFile = path.join(distFolder, genYesterdayLogFileName())   //
+    const distFile = path.join(distFolder, genYesterdayLogFileName()) //
     console.log('3. 目标文件', distFile)
     fse.ensureFileSync(distFile) // 创建文件（API 本意是确定是否存在，但不存在时会自动帮助创建）
     fse.outputFileSync(distFile, '') // 防止重复，先清空文件内容
@@ -46,4 +47,3 @@ function splitLogFile(accessLogPath) {
 }
 // splitLogFile() //测试用
 module.exports = splitLogFile
-

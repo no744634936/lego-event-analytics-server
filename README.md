@@ -1,16 +1,18 @@
-定时任务跟写入数据库就不用测了
+搭建koa2环境
+• 安装需要的npm插件
+  将前面做的哪些定时任务放进koa2项目里去
+  参考 lego-zhang-h5-server 项目的 1_set_up 分支
 
-因为不需要将测试写入数据库
+• 完善 src/appjs , cros,helmet中间件，
 
-查看 
-src/split_and_analysis/analysis-logs/index.js
-src/split_and_analysis/analysis-logs/analysis.js
-这两个文件，代码做了一点调整，写入了一个promise来取出result
+    引入定时拆分，删除，分析日志的三个方法 
+    splitLogFileTimed, rmLogsTimed, analysisLogsTimed
 
+    npm install koa-helmet --save   // 有什么用还不太清楚
 
-建立 __test__文件夹里面的所有文件
+    npm install koa2-cors --save // 跨域用
 
-run 
-npx jest __test__/analysis-logs/logs.test.js
+    middlewares/cors.js 文件
 
 
+• 定义 /api/db-check 路由

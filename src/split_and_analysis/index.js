@@ -45,13 +45,13 @@ function schedule(cronTime, callback) {
 function splitLogFileTimed() {
     // const cronTime = '0 22 14 * * *' // 测试时的时间
     const cronTime = '0 0 0 * * *' // 每天的 0:00:00 拆分日志
-    schedule(cronTime, splitLogFile)  //splitLogFile 方法定义了如何拆分日志
+    schedule(cronTime, splitLogFile) // splitLogFile 方法定义了如何拆分日志
     console.log('定时拆分日志文件', cronTime)
 }
 /**
  * 定时分析日志，记录到 mongodb
  */
- function analysisLogsTimed() {
+function analysisLogsTimed() {
     const cronTime = '0 0 4 * * *' // 每天的 4:00:00 ，此时凌晨，访问量较少，服务器资源处于闲置状态
     schedule(cronTime, analysisLogsAndWriteDB)
     console.log('定时分支日志并入库', cronTime)
@@ -71,4 +71,3 @@ module.exports = {
     analysisLogsTimed,
     rmLogsTimed,
 }
-

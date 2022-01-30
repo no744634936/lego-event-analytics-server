@@ -22,8 +22,6 @@ function yesterdayDate() {
     return y
 }
 
-
-
 /**
  * @description 生成昨天日志（按天拆分）文件
  */
@@ -37,7 +35,7 @@ function genYesterdayLogFileName() {
  * 日志文件格式
  * @param {Date} d 日期
  */
- function formatLogFile(d) {
+function formatLogFile(d) {
     const f = format(d, 'yyyy-MM-dd')
     return `${f}.log`
 }
