@@ -17,8 +17,8 @@ function formatNow() {
  * @description 获取昨天的 Date 对象
  */
 function yesterdayDate() {
-    const d = new Date()
-    const y = new Date(d.getTime() - 24 * 60 * 60 * 1000) // 24h 之前
+    const d = new Date() // 注意new Date返回的是世界标准时间
+    const y = new Date(d.getTime() - 24 * 60 * 60 * 1000) // 24h 之前，注意new Date返回的是世界标准时间
     return y
 }
 

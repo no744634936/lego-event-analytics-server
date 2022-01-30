@@ -16,4 +16,5 @@ async function analysisLogsAndWriteDB(accessLogPath) {
     console.log('----------- 日志结果入库 完成 -----------')
 }
 
+// analysisLogsAndWriteDB('/Users/zhanghaifeng/Projects_logs/nginx_logs/event_analytics/')
 module.exports = analysisLogsAndWriteDB

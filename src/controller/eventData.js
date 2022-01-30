@@ -25,6 +25,7 @@ async function getEventData(data = {}, startDate, endDate) {
     if (!startDate || !endDate) return new ErrorRes(startDateOrEndDateEmptyFailInfo)
 
     // 拼接查询条件
+    // startDate 跟 endDate 不管是什么时区的时间都转换成世界标准时间，来从mongodb数据库里查找
     const start = new Date(`${startDate} 0:00:00`) // 注意这里new Date得出的是世界标准时间
     const end = new Date(`${endDate} 23:59:59`) // 注意这里new Date得出的是世界标准时间
 
