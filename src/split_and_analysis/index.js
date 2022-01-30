@@ -6,7 +6,7 @@ const fse = require('fs-extra')
 const { CronJob } = require('cron')
 
 const splitLogFile = require('./split-log-file/index')
-const analysisLogs = require('./analysis-logs/index')
+const analysisLogsAndWriteDB = require('./analysis-logs/index')
 const rmLogs = require('./remove-logs/index')
 const { accessLogPath } = require('../config/index')
 
@@ -53,7 +53,7 @@ function splitLogFileTimed() {
  */
  function analysisLogsTimed() {
     const cronTime = '0 0 4 * * *' // 每天的 4:00:00 ，此时凌晨，访问量较少，服务器资源处于闲置状态
-    schedule(cronTime, analysisLogs)
+    schedule(cronTime, analysisLogsAndWriteDB)
     console.log('定时分支日志并入库', cronTime)
 }
 
