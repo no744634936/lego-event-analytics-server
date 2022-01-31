@@ -6,6 +6,7 @@
     "dev": "cross-env NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
     "prd": "cross-env NODE_ENV=production pm2 start bin/www",
     "test:local": "cross-env NODE_ENV=test_local jest --runInBand --passWithNoTests --forceExit --colors",
+    "test:remote": "cross-env NODE_ENV=test_remote jest --runInBand --passWithNoTests --forceExit --colors",
     "lint": "eslint \"src/**/*.{js,ts}\"",
     "lint-fix": "eslint --fix \"src/**/*.{js,ts}\""
   },
